@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26430.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpCrawler.Runner", "FtpCrawler.Runner\FtpCrawler.Runner.csproj", "{CF9680DD-3022-4DF0-8E99-AD367ACA1F2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpCrawler.Data", "FtpCrawler.Data\FtpCrawler.Data.csproj", "{6178A5F4-7009-4650-8641-B7840F5472CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FtpCrawler.Services", "FtpCrawler.Services\FtpCrawler.Services.csproj", "{E028745A-B4D0-4858-9ED3-F1368722C883}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CF9680DD-3022-4DF0-8E99-AD367ACA1F2B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF9680DD-3022-4DF0-8E99-AD367ACA1F2B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF9680DD-3022-4DF0-8E99-AD367ACA1F2B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF9680DD-3022-4DF0-8E99-AD367ACA1F2B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6178A5F4-7009-4650-8641-B7840F5472CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6178A5F4-7009-4650-8641-B7840F5472CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6178A5F4-7009-4650-8641-B7840F5472CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6178A5F4-7009-4650-8641-B7840F5472CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E028745A-B4D0-4858-9ED3-F1368722C883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E028745A-B4D0-4858-9ED3-F1368722C883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E028745A-B4D0-4858-9ED3-F1368722C883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E028745A-B4D0-4858-9ED3-F1368722C883}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
