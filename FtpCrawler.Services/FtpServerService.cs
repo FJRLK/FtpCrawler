@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using FtpCrawler.Data.Models;
+using System;
 using System.Linq;
-using System.Text;
-using FtpCrawler.Data.Models;
 
 namespace FtpCrawler.Services
 {
-     class FtpServerService: Interfaces.IFtpServerService
+    internal class FtpServerService : Interfaces.IFtpServerService
     {
         #region Fields
 
@@ -53,15 +51,15 @@ namespace FtpCrawler.Services
             return _repo.Table.FirstOrDefault(x => x.Id == id);
         }
 
-
-
         public IQueryable<FtpServer> GetAll()
         {
             return _repo.Table;
         }
 
-
-
+        public FtpServer GetByHostName(String hostName)
+        {
+            return _repo.Table.FirstOrDefault(x => x.HostName == hostName);
+        }
 
         #endregion Public Methods
     }

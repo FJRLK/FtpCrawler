@@ -1,0 +1,52 @@
+﻿@model FtpCrawler.Web.Models.FtpServerModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+<div class="clearfix"></div>
+
+<div>
+    <form class="form-horizontal" method="post" action="/Server/Add">
+        <div class="form-body">
+            <div class="form-group">
+                <label class="" for="HostName">Server</label>
+                @Html.TextBoxFor(m => m.HostName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.HostName)
+            </div>
+            <div class="form-group">
+                <label class="" for="Login">User</label>
+                @Html.TextBoxFor(m => m.Login, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Login)
+            </div>
+
+            <div class="form-group">
+                <label class="" for="Password">Password</label>
+                @Html.TextBoxFor(m => m.PassWord, new { @class = "form-control" })
+            </div>
+
+            <div class="form-group">
+                <label class="" for="Port">Port</label>
+                @Html.TextBoxFor(m => m.Port, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Port)
+            </div>
+            <div class="form-group">
+                <label class="" for="StartingDir">Starting directory</label>
+                @Html.TextBoxFor(m => m.StartingDir, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.StartingDir)
+            </div>
+            <div class="form-group">
+                <label class="" for="Comment">Comment</label>
+                @Html.TextAreaFor(m => m.Comment, new { @class = "form-control" })
+            </div>
+            <div class="form-actions">
+                <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section scripts{
+
+    @Scripts.Render("~/bundles/jqueryval")
+}

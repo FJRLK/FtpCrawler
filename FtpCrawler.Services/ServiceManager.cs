@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using System;
 
 namespace FtpCrawler.Services
 {
@@ -8,9 +9,24 @@ namespace FtpCrawler.Services
         {
         }
 
+        public static event EventHandler<DependancyRegisterEventArgs> OnDependancyRegister;
+
+        //internal static void OnDependancyRegister(DependancyRegisterEventArgs e)
+        //{
+        //    if (DependancyRegister != null) DependancyRegister(null, e);
+        //}
+
         private static Autofac.IContainer RegisterDependencies()
         {
             ContainerBuilder builder = new ContainerBuilder();
+
+
+            if (null != OnDependancyRegister)
+                OnDependancyRegister.Invoke(null, new DependancyRegisterEventArgs(builder));
+
+
+            
+
             builder.Register<Data.IDatabaseContext>(c => new Data.DatabaseContext(new System.Data.Entity.CreateDatabaseIfNotExists<Data.DatabaseContext>())).SingleInstance();
 
             builder.RegisterGeneric(typeof(Data.DataRepository<>)).As(typeof(Data.IDataRepository<>)).SingleInstance();
@@ -24,11 +40,21 @@ namespace FtpCrawler.Services
         }
 
         private static Autofac.IContainer _container = null;
-        private static Autofac.IContainer Container => _container ?? (_container = RegisterDependencies());
+        public static Autofac.IContainer Container => _container ?? (_container = RegisterDependencies());
 
         public static T ResolveService<T>()
         {
             return Container.Resolve<T>();
+        }
+    }
+
+    public class DependancyRegisterEventArgs : EventArgs
+    {
+        public ContainerBuilder Builder { get; internal set; }
+
+        public DependancyRegisterEventArgs(ContainerBuilder builder)
+        {
+            this.Builder = builder;
         }
     }
 }

@@ -18,5 +18,6 @@ namespace FtpCrawler.Services.Interfaces
         Data.Models.FtpServer GetById(Int64 id);
 
         void Update(Data.Models.FtpServer model);
+        Data.Models.FtpServer GetByHostName(String hostName);
     }
 }
