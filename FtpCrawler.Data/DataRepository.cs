@@ -266,5 +266,10 @@ namespace FtpCrawler.Data
         {
             return (DbContext)(context as DbContext);
         }
+
+        public void CommitChanges()
+        {
+            this._db.SaveChanges();
+        }
     }
 }

@@ -46,6 +46,7 @@ namespace FtpCrawler.Data.Models.Mapping
             this.Property(t => t.Id).HasColumnName("Id");
             this.Property(t => t.Created).HasColumnName("Created");
             this.Property(t => t.Modified).HasColumnName("Modified");
+            this.Property(t => t.LastOnline).HasColumnName("LastOnline");
             this.Property(t => t.HostName).HasColumnName("HostName");
             this.Property(t => t.Login).HasColumnName("Login");
             this.Property(t => t.PassWord).HasColumnName("PassWord");
@@ -55,6 +56,7 @@ namespace FtpCrawler.Data.Models.Mapping
             this.Property(t => t.Comment).HasColumnName("Comment");
             this.Property(t => t.EditableBy).HasColumnName("EditableBy");
 
+            this.Property(t => t.TotalFileSize).HasColumnName("TotalFileSize");
         }
     }
 }

@@ -1,8 +1,10 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace FtpCrawler.Services
 {
-     class FtpFileService : Interfaces.IFtpFileService
+    internal class FtpFileService : Interfaces.IFtpFileService
     {
         #region Fields
 
@@ -35,6 +37,14 @@ namespace FtpCrawler.Services
             _repo.Delete(model);
         }
 
+        public void Delete(IEnumerable<Data.Models.FtpFile> files)
+        {
+            foreach (var file in files)
+                _repo.Delete(file, false);
+
+            _repo.CommitChanges();
+        }
+
         public void Delete(long id)
         {
             Delete(GetById(id));
@@ -45,9 +55,19 @@ namespace FtpCrawler.Services
             return _repo.Table.FirstOrDefault(x => x.Id == id);
         }
 
-        public IQueryable<Data.Models.FtpFile> GetAll()
+        public IEnumerable<Data.Models.FtpFile> GetAll()
         {
             return _repo.Table;
+        }
+
+        public IEnumerable<Data.Models.FtpFile> GetAllNotModifiedSince(DateTime dateTime)
+        {
+            return this.GetAll().Where(f => f.Modified < dateTime);
+        }
+
+        public Data.Models.FtpFile GetByPath(String fullName)
+        {
+            return _repo.Table.FirstOrDefault(x => x.FullName == fullName);
         }
 
         #endregion Public Methods

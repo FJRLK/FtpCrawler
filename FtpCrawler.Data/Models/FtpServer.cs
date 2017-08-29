@@ -17,8 +17,9 @@ namespace FtpCrawler.Data.Models
         public String FileList { get; set; }
         public String Comment { get; set; }
         public String EditableBy { get; set; }
-
-        public ICollection<Folder> Folders { get; set; }
+        public DateTime? LastOnline { get; set; }
+        public ICollection<FtpFolder> Folders { get; set; }
         public ICollection<FtpFile> Files { get; set; }
+        public Int64 TotalFileSize { get;  set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace FtpCrawler.Data.Models
 {
-    public class Folder : BaseEntity
+    public class FtpFolder : BaseEntity
     {
         public Int64 Id { get; set; }
         public Int64 ServerId { get; set; }
@@ -14,8 +14,8 @@ namespace FtpCrawler.Data.Models
         public String FullName { get; set; }
 
 
-        public Folder ParentFolder { get; set; }
-        public ICollection<Folder> SubFolder { get; set; }
+        public FtpFolder ParentFolder { get; set; }
+        public ICollection<FtpFolder> SubFolder { get; set; }
         public ICollection<FtpFile> Files { get; set; }
         public FtpServer Server { get; set; }
 

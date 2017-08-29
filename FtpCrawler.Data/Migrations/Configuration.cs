@@ -1,4 +1,5 @@
-﻿using System.Data.Entity.Migrations;
+﻿using System;
+using System.Data.Entity.Migrations;
 
 namespace FtpCrawler.Data.Migrations
 {
@@ -6,23 +7,18 @@ namespace FtpCrawler.Data.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
+            ContextKey = "FtpCrawler";
         }
 
         protected override void Seed(DatabaseContext context)
         {
             //  This method will be called after migrating to the latest version.
 
-            //  You can use the DbSet<T>.AddOrUpdate() helper extension method
-            //  to avoid creating duplicate seed data. E.g.
-            //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Set<Models.Setting>().AddOrUpdate(
+                new Models.Setting { Key = "RemoveServerAfter", Type = typeof(Int32).FullName, Value = "10" },
+                new Models.Setting { Key = "RemoveFileFolderAfter", Type = typeof(Int32).FullName, Value = "1" }
+                );
         }
     }
 }

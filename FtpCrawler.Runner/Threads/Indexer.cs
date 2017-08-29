@@ -3,6 +3,7 @@ using System.Linq;
 
 namespace FtpCrawler.Runner.Threads
 {
+    [ThreadActionKey("FtpIndexer")]
     internal class Indexer : ITaskThread
     {
         public String ActionName => "FTP Server Indexer";
@@ -10,15 +11,28 @@ namespace FtpCrawler.Runner.Threads
         public ILogger Logger { get; private set; }
 
         private Services.Interfaces.IFtpServerService _FtpServerService;
+        private Services.Interfaces.IFtpFolderService _FtpFolderService;
+        private Services.Interfaces.IFtpFileService _FtpFileService;
 
         private Services.Interfaces.IFtpServerService FtpServerService => _FtpServerService ?? (_FtpServerService = Services.ServiceManager.ResolveService<Services.Interfaces.IFtpServerService>());
+        private Services.Interfaces.IFtpFolderService FtpFolderService => _FtpFolderService ?? (_FtpFolderService = Services.ServiceManager.ResolveService<Services.Interfaces.IFtpFolderService>());
+        private Services.Interfaces.IFtpFileService FtpFileService => _FtpFileService ?? (_FtpFileService = Services.ServiceManager.ResolveService<Services.Interfaces.IFtpFileService>());
 
         public Boolean Run()
         {
-            var servers = FtpServerService.GetAll();
+            Data.Models.FtpServer[] servers = FtpServerService.GetAll().ToArray();
 
-            if (servers.Any()) {
-
+            if (servers.Any())
+            {
+                //index servers in parallel
+                System.Threading.Tasks.Parallel.ForEach(servers, (server) =>
+                //foreach (var server in servers)
+                {
+                    using (Utils.ServerIndexer serverIndexer = new Utils.ServerIndexer(server))
+                    {
+                        serverIndexer.IndexServer();
+                    }
+                });
             }
 
             return true;

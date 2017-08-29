@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace FtpCrawler.Data.Models
 {
@@ -16,7 +15,7 @@ namespace FtpCrawler.Data.Models
         public Int64 FileSize { get; set; }
         public DateTime FileDate { get; set; }
 
-        public Folder Folder { get; set; }
+        public FtpFolder Folder { get; set; }
         public FtpServer Server { get; set; }
     }
 }

@@ -3,24 +3,30 @@
     ViewBag.Title = "Servers List";
 }
 
-<div >
+<div>
     FTP Servers
-    <div class="pull-right">@Html.ActionLink("Add Server","Add","Server")</div>
+    <div class="pull-right">@Html.ActionLink("Add Server", "Add", "Server")</div>
 </div>
 
 <div>
-    <table >
+    <table class="table table-bordered table-responsive table-striped" >
         <thead>
             <tr>
+                <th>&nbsp;</th>
                 <th>Hostname</th>
+                <th>User</th>
             </tr>
         </thead>
         <tbody>
-            @foreach (var server in Model) {
+            @foreach (var server in Model)
+            {
+            <tr>
 
+                <td>@server.Online</td>
                 <td>@server.HostName</td>
+                <td>@server.Login</td>
+            </tr>
             }
         </tbody>
     </table>
-
 </div>

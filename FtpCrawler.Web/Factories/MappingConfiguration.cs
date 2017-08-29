@@ -8,7 +8,7 @@
             {
                 //convention to be used here is first the db model, then the DTS model
 
-                cfg.CreateMap<FtpCrawler.Web.Models.FtpServerModel, FtpCrawler.Data.Models.FtpServer>().ForMember(x => x.Id, opts => opts.MapFrom(y => y.EntryId)).ReverseMap();
+                cfg.CreateMap<FtpCrawler.Data.Models.FtpServer, FtpCrawler.Web.Models.FtpServerModel>().ForMember(x => x.Online, opt => opt.Ignore()).ForMember(x => x.EntryId, opts => opts.MapFrom(y => y.Id)).ReverseMap();
             });
 
             return config;

@@ -2,9 +2,9 @@
 
 namespace FtpCrawler.Data.Models.Mapping
 {
-    public class FolderMap : EntityTypeConfiguration<Folder>
+    public class FtpFolderMap : EntityTypeConfiguration<FtpFolder>
     {
-        public FolderMap()
+        public FtpFolderMap()
         {
             // Primary Key
             this.HasKey(t => t.Id);
